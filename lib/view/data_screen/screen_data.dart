@@ -2,8 +2,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:student/core/color.dart';
 import 'package:student/view/search/search.dart';
-import '../../control/add_student/add_student_controller.dart';
-import '../../control/data_screen/data_screen_controller.dart';
+import '../../controller/add_student/add_student_controller.dart';
+import '../../controller/data_screen/data_screen_controller.dart';
 import '../show_data/screen_show_data.dart';
 import 'package:get/get.dart';
 

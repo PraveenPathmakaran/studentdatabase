@@ -4,8 +4,8 @@ import 'package:student/view/add_student/add_student_data.dart';
 import 'package:student/view/data_screen/screen_data.dart';
 import 'package:get/get.dart';
 
-import '../../control/add_student/add_student_controller.dart';
-import '../../control/data_screen/data_screen_controller.dart';
+import '../../controller/add_student/add_student_controller.dart';
+import '../../controller/data_screen/data_screen_controller.dart';
 
 class ScreenHome extends StatelessWidget {
   ScreenHome({Key? key}) : super(key: key);

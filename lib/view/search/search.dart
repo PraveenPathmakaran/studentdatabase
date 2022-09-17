@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:student/view/show_data/screen_show_data.dart';
-import '../../control/add_student/add_student_controller.dart';
-import '../../control/data_screen/data_screen_controller.dart';
-import '../../control/search_screen/search_screen_controller.dart';
+import '../../controller/add_student/add_student_controller.dart';
+import '../../controller/data_screen/data_screen_controller.dart';
+import '../../controller/search_screen/search_screen_controller.dart';
 import '../../model/data_model.dart';
 
 class NameSearch extends SearchDelegate<StudentModel> {

@@ -8,15 +8,13 @@ import 'package:student/view/add_student/text_form_widget.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../control/add_student/add_student_controller.dart';
+import '../../controller/add_student/add_student_controller.dart';
 import '../../model/data_model.dart';
 
 class ScreenAddStudentData extends StatelessWidget {
   final int? id;
   final StudentModel? studentData;
   final bool? updateData;
-  late double width;
-  late double height;
 
   ScreenAddStudentData(
       {Key? key, this.id, this.studentData, required this.updateData})
@@ -31,8 +29,6 @@ class ScreenAddStudentData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    width = MediaQuery.of(context).size.width;
-    height = MediaQuery.of(context).size.height;
     addStudentController.image.value = null;
     if (studentData != null) {
       nameController.text = studentData!.name;
@@ -50,8 +46,6 @@ class ScreenAddStudentData extends StatelessWidget {
         title: const Text('Add Details'),
       ),
       body: SizedBox(
-        height: height,
-        width: width,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -62,15 +56,14 @@ class ScreenAddStudentData extends StatelessWidget {
                   children: [
                     Obx(
                       () {
+                        log('build');
                         return GestureDetector(
                           onTap: () {
                             homeBottomSheet();
-                            log(width.toString());
-                            log(height.toString());
                           },
                           child: SizedBox(
-                            width: width * 50 / 100,
-                            height: width * 50 / 100,
+                            width: 100,
+                            height: 100,
                             child: addStudentController.image.value == null
                                 ? Lottie.network(
                                     imagePath,
@@ -102,7 +95,7 @@ class ScreenAddStudentData extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                           shape: const StadiumBorder(),
                           backgroundColor: kwhite,
-                          minimumSize: Size(double.infinity, width * 12 / 100)),
+                          minimumSize: Size(double.infinity, 50)),
                       onPressed: () async {
                         final success =
                             await addStudentController.addButtonPress(
