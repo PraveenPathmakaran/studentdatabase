@@ -46,6 +46,8 @@ class ScreenAddStudentData extends StatelessWidget {
         title: const Text('Add Details'),
       ),
       body: SizedBox(
+        height: Get.height,
+        width: Get.width,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -56,14 +58,13 @@ class ScreenAddStudentData extends StatelessWidget {
                   children: [
                     Obx(
                       () {
-                        log('build');
                         return GestureDetector(
                           onTap: () {
                             homeBottomSheet();
                           },
                           child: SizedBox(
-                            width: 100,
-                            height: 100,
+                            width: Get.width * 50 / 100,
+                            height: Get.width * 50 / 100,
                             child: addStudentController.image.value == null
                                 ? Lottie.network(
                                     imagePath,

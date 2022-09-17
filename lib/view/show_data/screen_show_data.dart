@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:student/core/color.dart';
+import 'package:student/model/data_model.dart';
 import 'package:student/view/add_student/add_student_data.dart';
 import 'dart:io';
 
@@ -59,22 +60,7 @@ class ScreenShowData extends StatelessWidget {
                   const SizedBox(
                     height: 100,
                   ),
-                  ScreenShowDataTextField(
-                    content: listData.name,
-                    title: 'Name',
-                  ),
-                  ScreenShowDataTextField(
-                    content: listData.age,
-                    title: 'Age',
-                  ),
-                  ScreenShowDataTextField(
-                    content: listData.standard,
-                    title: 'Class',
-                  ),
-                  ScreenShowDataTextField(
-                    content: listData.place,
-                    title: 'Place',
-                  ),
+                  StudentDataTable(listData: listData)
                 ],
               ),
             ),
@@ -85,27 +71,60 @@ class ScreenShowData extends StatelessWidget {
   }
 }
 
-class ScreenShowDataTextField extends StatelessWidget {
-  const ScreenShowDataTextField(
-      {Key? key, required this.content, required this.title})
-      : super(key: key);
+class StudentDataTable extends StatelessWidget {
+  const StudentDataTable({
+    Key? key,
+    required this.listData,
+  }) : super(key: key);
 
-  final String content;
-  final String title;
+  final StudentModel listData;
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          '$title : ',
-          style: const TextStyle(fontSize: 25),
+    return DataTable(
+      columns: <DataColumn>[
+        const DataColumn(
+          label: StudentDataShowText(title: 'Name'),
         ),
-        Text(
-          content,
-          style: const TextStyle(fontSize: 25),
-        )
+        DataColumn(label: StudentDataShowText(title: listData.name)),
       ],
+      rows: <DataRow>[
+        DataRow(
+          cells: <DataCell>[
+            const DataCell(StudentDataShowText(title: 'Age')),
+            DataCell(StudentDataShowText(title: listData.age)),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            const DataCell(StudentDataShowText(title: 'Class')),
+            DataCell(StudentDataShowText(title: listData.standard)),
+          ],
+        ),
+        DataRow(
+          cells: <DataCell>[
+            const DataCell(StudentDataShowText(title: 'Place')),
+            DataCell(StudentDataShowText(title: listData.place)),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class StudentDataShowText extends StatelessWidget {
+  final String title;
+  const StudentDataShowText({Key? key, required this.title}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      title,
+      style: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: kwhite,
+          overflow: TextOverflow.ellipsis),
     );
   }
 }

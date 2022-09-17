@@ -56,7 +56,7 @@ class AddStudentController extends GetxController {
             profileImage: image.value!.path.toString(),
             id: updateData!.id);
 
-        dataController.updateStudent(studentUpdate);
+        await dataController.updateStudent(studentUpdate);
         update = false;
         Get.off(ScreenShowData(id: updateData.id!));
       } else {
@@ -105,7 +105,9 @@ class AddStudentController extends GetxController {
       required String content,
       Color color = Colors.white}) {
     Get.snackbar(title, content,
-        snackPosition: SnackPosition.BOTTOM, backgroundColor: color);
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: color,
+        duration: const Duration(seconds: 1));
   }
 
   @override
