@@ -23,7 +23,7 @@ class ScreenHome extends StatelessWidget {
         return Scaffold(
           body: pages[stateController.tabIndex.value],
           bottomNavigationBar: BottomNavigationBar(
-            unselectedItemColor: kblack,
+            unselectedItemColor: kGrey,
             selectedItemColor: kwhite,
             backgroundColor: kbackground,
             elevation: 0,

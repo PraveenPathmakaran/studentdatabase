@@ -43,7 +43,11 @@ class ScreenAddStudentData extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Add Details'),
+        title: const Text(
+          'ADD STUDENT DETAIL',
+          style: TextStyle(color: kParisWhite),
+        ),
+        centerTitle: true,
       ),
       body: SizedBox(
         height: Get.height,
@@ -95,8 +99,8 @@ class ScreenAddStudentData extends StatelessWidget {
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           shape: const StadiumBorder(),
-                          backgroundColor: kwhite,
-                          minimumSize: Size(double.infinity, 50)),
+                          backgroundColor: kParisWhite,
+                          minimumSize: const Size(double.infinity, 50)),
                       onPressed: () async {
                         final success =
                             await addStudentController.addButtonPress(
