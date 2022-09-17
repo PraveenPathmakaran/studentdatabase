@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:student/db/model/data_model.dart';
-import 'package:student/screens/screen_home.dart';
+import 'package:student/view/home/screen_home.dart';
+import 'package:get/get.dart';
+
+import 'model/data_model.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,27 +15,16 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
   @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Student DB',
       theme: ThemeData(primarySwatch: Colors.blue),
-      home: const ScreenHome(),
+      home: ScreenHome(),
     );
-  }
-
-  @override
-  void dispose() {
-    Hive.close();
-    super.dispose();
   }
 }
