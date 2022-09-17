@@ -143,33 +143,45 @@ class ScreenAddStudentData extends StatelessWidget {
     Get.bottomSheet(
       Container(
         width: double.infinity,
-        height: 80,
+        height: Get.width * 30 / 100,
         decoration: const BoxDecoration(
-          color: Colors.white,
+          color: Color(0xff002244),
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(40.0),
             topRight: Radius.circular(40.0),
           ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        child: Column(
           children: [
-            homeBottomSheetIcon(
-                title: 'Camera', value: 'camera', icon: Icons.camera),
-            homeBottomSheetIcon(
-                title: 'Gallery', value: 'gallery', icon: Icons.photo),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                homeBottomSheetIcon(
+                    title: 'Camera', value: 'camera', icon: Icons.camera),
+                homeBottomSheetIcon(
+                    title: 'Gallery', value: 'gallery', icon: Icons.photo),
+              ],
+            ),
+            TextButton(
+                onPressed: () {
+                  Get.back();
+                },
+                child: const Text(
+                  'close',
+                  style: TextStyle(color: kwhite),
+                )),
           ],
         ),
       ),
     );
   }
 
-  Column homeBottomSheetIcon(
+  Widget homeBottomSheetIcon(
       {required String title, required String value, required IconData icon}) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         IconButton(
+            padding: const EdgeInsets.all(0),
             onPressed: () {
               if (value == 'camera') {
                 addStudentController.pickImageFromCamera();
@@ -181,12 +193,13 @@ class ScreenAddStudentData extends StatelessWidget {
             },
             icon: Icon(
               icon,
-              size: 40,
-              color: Colors.blue,
+              size: 50,
+              color: kwhite,
             )),
         Text(
           title,
-          style: const TextStyle(fontSize: 15),
+          style: const TextStyle(
+              fontSize: 15, fontWeight: FontWeight.bold, color: kwhite),
         )
       ],
     );

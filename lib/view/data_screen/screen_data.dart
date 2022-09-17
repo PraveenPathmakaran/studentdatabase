@@ -20,13 +20,20 @@ class ScreenStudentDetails extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Student Data'),
+        title: const Text(
+          'ALL STUDENTS',
+          style: TextStyle(color: kParisWhite),
+        ),
+        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {
               showSearch(context: context, delegate: NameSearch());
             },
-            icon: const Icon(Icons.search),
+            icon: const Icon(
+              Icons.search,
+              color: kParisWhite,
+            ),
           )
         ],
       ),
@@ -36,40 +43,50 @@ class ScreenStudentDetails extends StatelessWidget {
               ? const Center(
                   child: Text("List is empty"),
                 )
-              : ListView.separated(
+              : ListView.builder(
                   itemCount: dataScreenController.studentModelList.length,
-                  separatorBuilder: (BuildContext context, int index) =>
-                      const Divider(height: 3, color: Colors.white),
                   itemBuilder: (BuildContext context, int index) {
                     final listData =
                         dataScreenController.studentModelList[index];
-                    return ListTile(
-                      onTap: () {
-                        Get.to(
-                          () => ScreenShowData(
-                            id: listData.id!,
-                          ),
-                        );
-                      },
-                      leading: CircleAvatar(
-                        backgroundImage:
-                            FileImage(File(listData.profileImage.toString())),
+                    return Card(
+                      color: Colors.transparent,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
                       ),
-                      title: Text(listData.name),
-                      subtitle: Text(listData.age),
-                      trailing: IconButton(
-                        onPressed: () {
-                          if (listData.id != null) {
-                            dataScreenController.deleteStudent(listData.id!);
-
-                            Get.find<AddStudentController>().homeSnackBar(
-                                title: 'Successful',
-                                content: "Successfully deleted",
-                                color: Colors.green);
-                          } else {}
+                      child: ListTile(
+                        onTap: () {
+                          Get.to(
+                            () => ScreenShowData(
+                              id: listData.id!,
+                            ),
+                          );
                         },
-                        icon: const Icon(Icons.delete),
-                        color: Colors.red,
+                        leading: CircleAvatar(
+                          backgroundImage:
+                              FileImage(File(listData.profileImage.toString())),
+                        ),
+                        title: Text(
+                          listData.name,
+                          style: const TextStyle(color: kwhite),
+                        ),
+                        subtitle: Text(
+                          listData.standard,
+                          style: const TextStyle(color: kwhite),
+                        ),
+                        trailing: IconButton(
+                          onPressed: () {
+                            if (listData.id != null) {
+                              dataScreenController.deleteStudent(listData.id!);
+
+                              Get.find<AddStudentController>().homeSnackBar(
+                                  title: 'Successful',
+                                  content: "Successfully deleted",
+                                  color: Colors.green);
+                            } else {}
+                          },
+                          icon: const Icon(Icons.delete),
+                          color: Colors.red,
+                        ),
                       ),
                     );
                   },
