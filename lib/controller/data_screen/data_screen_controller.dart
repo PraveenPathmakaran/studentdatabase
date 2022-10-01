@@ -4,7 +4,9 @@ import 'package:get/get.dart';
 import '../../model/data_model.dart';
 
 class DataScreenController extends GetxController {
+  /////
   RxList<StudentModel> studentModelList = <StudentModel>[].obs;
+////
   Future<void> addStudent(StudentModel value) async {
     final studentDB = await Hive.openBox<StudentModel>('student_db');
     final id = await studentDB.add(value);

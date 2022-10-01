@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:student/view/data_screen/screen_data.dart';
 import 'package:student/view/show_data/screen_show_data.dart';
 
 import '../../core/color.dart';
@@ -111,8 +110,8 @@ class AddStudentController extends GetxController {
   }
 
   @override
-  void onInit() {
+  void onClose() {
     Hive.close();
-    super.onInit();
+    super.onClose();
   }
 }

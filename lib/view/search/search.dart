@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:student/core/color.dart';
@@ -47,7 +46,7 @@ class NameSearch extends SearchDelegate<StudentModel> {
   Widget buildSuggestions(BuildContext context) {
     searchScreenController.suggestionList = dataScreenController
         .studentModelList
-        .where((p) => p.name.toLowerCase().contains(query))
+        .where((p) => p.name.toLowerCase().contains(query.toLowerCase()))
         .toList()
         .obs;
     return Obx(
@@ -109,6 +108,9 @@ class NameSearch extends SearchDelegate<StudentModel> {
         color: kbackground, // affects AppBar's background color
         titleTextStyle: TextStyle(color: kwhite),
       ),
+      textTheme: const TextTheme(headline6: TextStyle(color: Colors.white)),
+      textSelectionTheme:
+          const TextSelectionThemeData(cursorColor: Colors.white),
       inputDecorationTheme: const InputDecorationTheme(
         hintStyle: TextStyle(color: kGrey),
         labelStyle: TextStyle(color: Colors.white),
